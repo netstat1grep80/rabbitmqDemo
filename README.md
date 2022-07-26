@@ -1,8 +1,8 @@
 # rabbitmqDemo
 
-####1.mvn clean package
+###1.mvn clean package
 
-####2.shell mode: producter start.
+##2.shell mode: producter start.
 ```
 java -jar mq-producter/target/mq-producter-1.0.0.jar
 ```
