@@ -16,7 +16,7 @@ java -jar mq-consumer/target/mq-consumer-1.0.0.jar
 ```
 http://localhost:8080/mq/send?type=direct&userName=tester
 ```
-rerurn
+return
 ```
 {"code":200,"msg":null,"data":null,"success":true}
 ```
