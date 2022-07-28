@@ -27,6 +27,7 @@ public class RabbitConfig {
     @Bean
     public AmqpAdmin amqpAdmin(CachingConnectionFactory cachingConnectionFactory){
         AmqpAdmin amqpAdmin = new RabbitAdmin(cachingConnectionFactory);
+
         amqpAdmin.declareQueue(directQueue());
         amqpAdmin.declareExchange(directExchange());
         amqpAdmin.declareBinding(bindingDirect());
@@ -36,9 +37,11 @@ public class RabbitConfig {
         amqpAdmin.declareExchange(fanoutExchange());
         amqpAdmin.declareBinding(bindingFanoutA());
         amqpAdmin.declareBinding(bindingFanoutB());
+
         amqpAdmin.declareExchange(deadExchange());
         amqpAdmin.declareQueue(deadQueue());
         amqpAdmin.declareBinding(bindingDeadExchange());
+
         return amqpAdmin;
     }
     /**
