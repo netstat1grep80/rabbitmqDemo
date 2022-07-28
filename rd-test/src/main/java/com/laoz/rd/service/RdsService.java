@@ -22,4 +22,25 @@ public class RdsService {
 
     @Resource
     private JedisPool jedisPool;
+
+    @Bean
+    public void testRedis(){
+
+        String key = "name";
+        String value = "jack";
+        Jedis jedis = null;
+        String result = null;
+        try {
+            jedis = jedisPool.getResource();
+//            result = jedis.set(key, value);
+            log.info(jedis.get(key));
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.error("redis连接池异常"+e.getMessage());
+        } finally {
+            if (jedis != null) {
+                jedis.close();
+            }
+        }
+    }
 }

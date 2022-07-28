@@ -2,7 +2,7 @@ package com.laoz.mq.producter.service;
 
 import com.rabbitmq.client.Return;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.amqp.core.ReturnedMessage;
+import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Component;
 
@@ -13,14 +13,15 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
-public class RabbitReturnCallbackService implements RabbitTemplate.ReturnsCallback{
+public class RabbitReturnCallbackService implements RabbitTemplate.ReturnCallback{
 
     /**
      * message route failed，callback
      * message (routingKey) recived exchange，与交换机的所有绑定键进行匹配，匹配不到触发回调
      */
+
     @Override
-    public void returnedMessage(ReturnedMessage m) {
-        log.error("returnedMessage ===> replyCode={} ,replyText={} ,exchange={} ,routingKey={}", m.getReplyCode(), m.getReplyText(), m.getExchange(), m.getRoutingKey());
+    public void returnedMessage(Message message, int replyCode, String replyText, String exchange, String routeKey) {
+        log.error("returnedMessage ===> replyCode={} ,replyText={} ,exchange={} ,routingKey={}", replyCode, replyText, exchange , routeKey);
     }
 }

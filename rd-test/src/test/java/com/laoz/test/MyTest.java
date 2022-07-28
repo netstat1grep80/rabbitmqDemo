@@ -1,5 +1,7 @@
 package com.laoz.test;
 
+import com.alibaba.nacos.spring.context.annotation.config.NacosPropertySource;
+import com.laoz.rd.RunRdApplication;
 import com.laoz.rd.config.JedisConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -11,17 +13,14 @@ import org.springframework.test.context.junit4.SpringRunner;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
-import javax.annotation.Resource;
-
 /**
  * @author: laoz
  * @Time: 2022/7/28  14:37
  * @description:
  */
 @Slf4j
-@SpringBootTest
+@SpringBootTest(classes = RunRdApplication.class)
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = {JedisConfig.class})
 public class MyTest {
 
     @Autowired
@@ -29,7 +28,6 @@ public class MyTest {
 
     @Test
     public void testRedis(){
-
         String key = "name";
         String value = "jack";
         Jedis jedis = null;
@@ -46,9 +44,5 @@ public class MyTest {
                 jedis.close();
             }
         }
-
-
-
-
     }
 }

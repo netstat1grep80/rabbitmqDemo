@@ -5,9 +5,12 @@ package com.laoz.rd.config;
  * @Time: 2022/7/28  14:34
  * @description:
  */
+import com.alibaba.nacos.api.config.annotation.NacosValue;
+import com.alibaba.nacos.spring.context.annotation.config.NacosPropertySource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -16,27 +19,26 @@ import redis.clients.jedis.JedisPoolConfig;
 
 @Slf4j
 @Configuration
-@PropertySource(value = "classpath:application-jedis.properties")
 public class JedisConfig {
-    @Value("${spring.redis.host}")
+    @NacosValue(value = "${spring.redis.host}", autoRefreshed = true)
     private String host;
 
-    @Value("${spring.redis.port}")
+    @NacosValue(value = "${spring.redis.port}", autoRefreshed = true)
     private int port;
 
-    @Value("${spring.redis.timeout}")
+    @NacosValue(value = "${spring.redis.timeout}", autoRefreshed = true)
     private int timeout;
 
-    @Value("${spring.redis.jedis.pool.max-idle}")
+    @NacosValue(value = "${spring.redis.jedis.pool.max-idle}", autoRefreshed = true)
     private int maxIdle;
 
-    @Value("${spring.redis.jedis.pool.max-wait}")
+    @NacosValue(value = "${spring.redis.jedis.pool.max-wait}", autoRefreshed = true)
     private long maxWaitMillis;
 
-    @Value("${spring.redis.password}")
+    @NacosValue(value = "${spring.redis.password}", autoRefreshed = true)
     private String password;
 
-    @Value("${spring.redis.database}")
+    @NacosValue(value = "${spring.redis.database}", autoRefreshed = true)
     private int database;
 
     @Bean

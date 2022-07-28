@@ -27,7 +27,7 @@ public class SendService{
     private  RabbitConfirmCallbackService rabbitConfirmCallbackService;
 
     public void run(String type , UserDTO user) throws JsonProcessingException {
-        rabbitTemplate.setReturnsCallback(rabbitReturnCallbackService);
+        rabbitTemplate.setReturnCallback(rabbitReturnCallbackService);
         rabbitTemplate.setConfirmCallback(rabbitConfirmCallbackService);
         if(type.equals("direct")) {
              rabbitTemplate.convertAndSend(MqConstants.DIRECT_EXCHANGE, MqConstants.ROUTINGKEY, user);
