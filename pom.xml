@@ -17,6 +17,7 @@
 		<module>mq-consumer</module>
 		<module>mq-common</module>
         <module>rd-test</module>
+        <module>jpa</module>
     </modules>
 
 	<groupId>com.laoz</groupId>
