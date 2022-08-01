@@ -13,11 +13,11 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>mq-producter</module>
-		<module>mq-consumer</module>
-		<module>mq-common</module>
-        <module>rd-test</module>
-        <module>jpa</module>
+		<module>test-mq-producter</module>
+		<module>test-mq-consumer</module>
+		<module>laoz-common</module>
+        <module>test-redis</module>
+        <module>test-jpa</module>
     </modules>
 
 	<groupId>com.laoz</groupId>
@@ -70,6 +70,10 @@
 			<groupId>com.alibaba.boot</groupId>
 			<artifactId>nacos-config-spring-boot-starter</artifactId>
 			<version>0.2.8</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 	</dependencies>
 
